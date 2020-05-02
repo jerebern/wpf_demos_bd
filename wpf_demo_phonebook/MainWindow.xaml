@@ -7,7 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="300" Width="800">
     <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Content="+Contact" Command="{Binding AddContactCommand}"
+                        CommandParameter=""/>
+                <TextBlock Text="Recherche : "/>
+                     <TextBox x:Name="txtCriteria" HorizontalAlignment="Right" Width="150"/>
+                    <Button  Grid.Row="0" Grid.Column="1" Content="Recherche" 
+                    Command="{Binding SearchContactCommand}" 
+                    CommandParameter="{Binding ElementName=txtCriteria,Path=Text}" /> 
+            </ToolBar>
+            </ToolBarTray>
+        
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
@@ -22,10 +35,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-
+             
         <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
-            <TextBlock Text="Recherche : "/>
-            <TextBox x:Name="txtCriteria" HorizontalAlignment="Right" Width="150"/>
+
         </StackPanel>
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Prénom : "/>
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Nom de famille : "/>
@@ -34,9 +46,7 @@
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Celluaire : "/>
         <TextBlock Grid.Row="7" Grid.Column="0" Text="Identifiant : "/>
 
-        <Button  Grid.Row="0" Grid.Column="1" Content="Recherche" 
-                    Command="{Binding SearchContactCommand}" 
-                    CommandParameter="{Binding ElementName=txtCriteria,Path=Text}" />
+
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding SelectedContact.FirstName}"/>
         <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding SelectedContact.LastName}"/>
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedContact.Email}"/>
