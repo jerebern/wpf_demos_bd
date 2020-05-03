@@ -71,13 +71,13 @@
         <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding SelectedContact.Email}"/>
         <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding SelectedContact.Phone}"/>
         <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding SelectedContact.Mobile}"/>
-        <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding SelectedContact.ContactID}"/>
+        <TextBox Grid.Row="7" Grid.Column="1" x:Name="txtID" Text="{Binding SelectedContact.ContactID}"/>
             
          <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" HorizontalAlignment="Right" Margin="5">
                     <Button Content="Enregistrer" Margin="5" Command="{Binding SaveContactCommand}"
-                        CommandParameter=""/>
+                        CommandParameter="{Binding ElementName=txtCriteria,Path=Text}"/>
                     <Button Content="Supprimer" Margin="5" Command="{Binding DeleteContactCommand}"
-                        CommandParameter=""/>           
+                        CommandParameter="{Binding ElementName=txtID,Path=Text}"/>           
             
                     </StackPanel>
         </Grid>

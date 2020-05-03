@@ -42,11 +42,15 @@ namespace wpf_demo_phonebook.ViewModels
         }
 
         public RelayCommand SearchContactCommand { get; set; }
+        public RelayCommand SaveContactCommand { get; set; }
+
+        public RelayCommand DeleteContactCommand { get; set; }
 
         public MainViewModel()
         {
 
             SearchContactCommand = new RelayCommand(SearchContact);
+            DeleteContactCommand = new RelayCommand(DeleteContact);
             SelectedContact = PhoneBookBusiness.GetContactByID(1);
             GetAllContactsFromDataBase(); //Init Value sur les autres travaille
         }
@@ -82,6 +86,26 @@ namespace wpf_demo_phonebook.ViewModels
                     MessageBox.Show("Unkonwn search method");
                     break;
             }
+        }
+
+        private void DeleteContact(object parameter)
+        {
+            string input = parameter as string;
+
+            int output;
+            Int32.TryParse(input, out output);
+
+
+            Debug.WriteLine("Tentative de supression ID  : " + output);
+            
+
+            PhoneBookBusiness.DeleteContact(output);
+
+            //Permet de rafraichir la listeView une fois que la supression est faite 
+            //#JeSuisParesseux
+            GetAllContactsFromDataBase();
+           
+            
         }
     }
 }

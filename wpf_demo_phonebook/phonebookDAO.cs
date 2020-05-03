@@ -68,5 +68,19 @@ namespace wpf_demo_phonebook
             
             return conn.ExecuteSelectQuery(_querry, parameters);
         }
+
+        public void DeleteContactFromDatabase(int _id) {
+
+
+            string _querry =
+                $"DELETE FROM [Contacts] WHERE ContactID = @_id";
+
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@_id", SqlDbType.Int);
+            parameters[0].Value = _id;
+
+            conn.ExecuteSelectQuery(_querry, parameters);
+
+        }
     }
 }

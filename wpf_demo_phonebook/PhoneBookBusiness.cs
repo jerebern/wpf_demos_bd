@@ -62,6 +62,14 @@ namespace wpf_demo_phonebook
 
         }
 
+        public static void DeleteContact(int _id)
+        {
+            dao.DeleteContactFromDatabase(_id);
+            
+
+
+        }
+
         public static ContactModel GetContactByID(int _id)
         {
             ContactModel cm = null;
@@ -94,5 +102,7 @@ namespace wpf_demo_phonebook
 
             return cm;
         }
+
+       
     }
 }
