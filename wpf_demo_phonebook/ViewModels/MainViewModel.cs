@@ -92,6 +92,8 @@ namespace wpf_demo_phonebook.ViewModels
         {
             string input = parameter as string;
 
+           if( MessageBox.Show("Etes-vous sur de supprimer l'utisateur avec ID :  " + input, "Confirmation", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
             int output;
             Int32.TryParse(input, out output);
 
@@ -105,7 +107,10 @@ namespace wpf_demo_phonebook.ViewModels
             //#JeSuisParesseux
             GetAllContactsFromDataBase();
            
-            
+
+
+            }
+                        
         }
     }
 }
