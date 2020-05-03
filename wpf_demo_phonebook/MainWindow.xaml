@@ -30,14 +30,7 @@
             <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" IsSynchronizedWithCurrentItem="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBlock Grid.Column="4" Grid.Row="1">
-                            <TextBlock.Text>
-                                <MultiBinding StringFormat="{}{0},{1}">
-                                    <Binding Path="FirstName" />
-                                    <Binding Path="LastName" />
-                                </MultiBinding>
-                            </TextBlock.Text>
-                        </TextBlock>
+                        <TextBlock Text="{Binding Info}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

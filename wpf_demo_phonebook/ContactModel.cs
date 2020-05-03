@@ -13,6 +13,17 @@ namespace wpf_demo_phonebook
         public string Phone { get; set; }
         public string Mobile { get; set; }
 
+
+        public string Info
+        {
+
+            get => $"{FirstName}, {LastName}";
+
+        }
+                
+               
+            
+
         public ContactModel()
         {
 
