@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
+using System.Diagnostics;
 using System.Text;
 
 namespace wpf_demo_phonebook
@@ -26,6 +28,38 @@ namespace wpf_demo_phonebook
             }
 
             return cm;
+        }
+
+        public static IEnumerable<ContactModel> GetAllContacts()
+        {
+            ContactModel cm = null;
+
+            DataTable dt = new DataTable();
+
+            List<ContactModel> contactsList = new List<ContactModel> { };
+
+            dt = dao.GetAllContact();
+
+            if (dt != null)
+            {
+                foreach (DataRow row in dt.Rows)
+                {
+                    cm = RowToContactModel(row);
+
+               //     Debug.WriteLine(cm.FirstName);   // Pour vérifier le contionement de la requete                
+                  contactsList.Add(cm); 
+                }
+
+
+            }
+
+            foreach (ContactModel c in contactsList)
+            {
+        
+                yield return c;
+            }
+
+
         }
 
         public static ContactModel GetContactByID(int _id)

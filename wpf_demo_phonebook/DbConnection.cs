@@ -54,6 +54,8 @@ namespace wpf_demo_phonebook
             {
                 command.Connection = open();
                 command.CommandText = _query;
+
+                if(parameters != null)
                 command.Parameters.AddRange(parameters);
                 command.ExecuteNonQuery();
                 DataAdapter.SelectCommand = command;

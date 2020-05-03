@@ -12,5 +12,10 @@ namespace wpf_demo_phonebook
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Mobile { get; set; }
+
+        public ContactModel()
+        {
+
+        }
     }
 }

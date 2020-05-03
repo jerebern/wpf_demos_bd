@@ -13,6 +13,7 @@ namespace wpf_demo_phonebook
         public PhonebookDAO()
         {
             conn = new DbConnection();
+
         }
 
         /// <summary>
@@ -54,6 +55,18 @@ namespace wpf_demo_phonebook
             parameters[0].Value = _id;
 
             return conn.ExecuteSelectQuery(_query, parameters);
+        }
+
+        public DataTable GetAllContact()
+        {
+
+            string _querry =
+                $"SELECT * FROM [Contacts]";
+
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters = null;
+            
+            return conn.ExecuteSelectQuery(_querry, parameters);
         }
     }
 }

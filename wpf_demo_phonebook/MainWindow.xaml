@@ -18,9 +18,34 @@
                     CommandParameter="{Binding ElementName=txtCriteria,Path=Text}" /> 
             </ToolBar>
             </ToolBarTray>
+
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Margin="6" Orientation="Horizontal" x:Name="spHeader">
+                <TextBlock Text="Liste des clients" />
+            </StackPanel>
+            <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" IsSynchronizedWithCurrentItem="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Grid.Column="4" Grid.Row="1">
+                            <TextBlock.Text>
+                                <MultiBinding StringFormat="{}{0},{1}">
+                                    <Binding Path="FirstName" />
+                                    <Binding Path="LastName" />
+                                </MultiBinding>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid>
         
-    <Grid>
-        
+               
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
