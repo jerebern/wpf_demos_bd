@@ -5,7 +5,7 @@ using System.Text;
 
 namespace wpf_demo_phonebook
 {
-    public class ContactModel : INotifyPropertyChanged
+    public class ContactModel
     {
         public int ContactID { get; set; }
         public string FirstName { get; set; }
@@ -30,6 +30,6 @@ namespace wpf_demo_phonebook
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+
     }
 }

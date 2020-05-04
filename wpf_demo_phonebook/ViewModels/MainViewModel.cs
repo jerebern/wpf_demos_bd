@@ -10,9 +10,22 @@ namespace wpf_demo_phonebook.ViewModels
     {
         private ObservableCollection<ContactModel> contacts;
         private ContactModel selectedContact;
-
+        int listViewIndex;
         private bool NewContactCreation; //Flag de verification
 
+
+        public int ListViewIndex
+        {
+            get => listViewIndex;
+
+            set {
+
+                listViewIndex = value;
+                OnPropertyChanged();
+            }
+            
+
+        }
         public ContactModel SelectedContact
         {
             get => selectedContact;
@@ -52,7 +65,7 @@ namespace wpf_demo_phonebook.ViewModels
 
         public MainViewModel()
         {
-
+            ListViewIndex = 0;
             SearchContactCommand = new RelayCommand(SearchContact);
             DeleteContactCommand = new RelayCommand(DeleteContact);
             SaveContactCommand = new RelayCommand(UpdateContact);
@@ -70,6 +83,7 @@ namespace wpf_demo_phonebook.ViewModels
 
         private void SearchContact(object parameter)
         {
+            bool Trouver = false;
             string input = parameter as string;
             int output;
             string searchMethod;
@@ -93,8 +107,31 @@ namespace wpf_demo_phonebook.ViewModels
                     MessageBox.Show("Unkonwn search method");
                     break;
             }
-           
+
+            //Trouve fait un index pour selection Item dans la listeView 
+            //Je n'ai pas trouver de facon pour couper la boucle rapidement une fois trouver
+            ListViewIndex = 0;
+            foreach (ContactModel c in contacts )
+            {
+
+               
+
+                if (c.ContactID == selectedContact.ContactID)
+                {
+                    Trouver = true;
+
+                }
+                else if (!Trouver)
+                {
+                    ListViewIndex++;
+                }
+            }
             
+            Debug.WriteLine(ListViewIndex);
+
+            Trouver = false;
+
+
         }
 
         private void NewContact(object parameter)
@@ -103,7 +140,7 @@ namespace wpf_demo_phonebook.ViewModels
 
             ContactModel contact = new ContactModel();
 
-            selectedContact = contact;
+            SelectedContact = contact;
 
             NewContactCreation = true;
 

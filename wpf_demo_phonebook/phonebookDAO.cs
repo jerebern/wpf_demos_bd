@@ -103,24 +103,39 @@ namespace wpf_demo_phonebook
             conn.ExecutUpdateQuery(_querry, parameters);
         }
 
+        /* public void InsertContactOnDatabase(string _FirstName, string _LastName, string _Email, string _Phone, string _Mobile, int _ContactID)
+         {
+
+             string _querry = $"INSERT INTO Contacts (" +
+                             $"FirstName = '{_FirstName}', " +
+                             $"LastName = '{_LastName}'," +
+                             $"Email = '{_Email}'," +
+                             $"Phone = '{_Phone}'," +
+                             $"Mobile = '{_Mobile}') " +
+                             $"WHERE ContactID = @_id";
+
+
+             SqlParameter[] parameters = new SqlParameter[1];
+             parameters[0] = new SqlParameter("@_id", SqlDbType.Int);
+             parameters[0].Value = _ContactID;
+
+
+             conn.ExecutUpdateQuery(_querry, parameters);
+         }*/
+
         public void InsertContactOnDatabase(string _FirstName, string _LastName, string _Email, string _Phone, string _Mobile, int _ContactID)
         {
+            string _query = $"INSERT INTO [Contacts]" +
+                           $" (FirstName, LastName, Email, Phone, Mobile) " +
+                           $"OUTPUT INSERTED.ContactID " +
+                           $"VALUES ('{_FirstName}','{_LastName}','{_Email}','{_Phone}','{_Mobile}')";
 
-            string _querry = $"INSERT INTO Contacts (" +
-                            $"FirstName = '{_FirstName}', " +
-                            $"LastName = '{_LastName}'," +
-                            $"Email = '{_Email}'," +
-                            $"Phone = '{_Phone}'," +
-                            $"Mobile = '{_Mobile}')" +
-                            $"WHERE ContactID = @_id";
-
-
-            SqlParameter[] parameters = new SqlParameter[1];
-            parameters[0] = new SqlParameter("@_id", SqlDbType.Int);
-            parameters[0].Value = _ContactID;
-
-
-            conn.ExecutUpdateQuery(_querry, parameters);
+             conn.ExecutInsertQuery(_query, null);
         }
+
+
+
+
+
     }
 }

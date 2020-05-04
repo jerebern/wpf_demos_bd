@@ -51,7 +51,8 @@
             <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}"
                       ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
                       Margin="5"
-                      IsSynchronizedWithCurrentItem="True">
+                      IsSynchronizedWithCurrentItem="True"
+                      SelectedIndex="{Binding ListViewIndex}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Info}"/>
