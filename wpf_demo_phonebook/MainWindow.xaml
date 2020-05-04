@@ -48,11 +48,7 @@
             <StackPanel Margin="6" Orientation="Horizontal" x:Name="spHeader">
                 <TextBlock Text="Liste des contacts" />
             </StackPanel>
-            <ListView ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}"
-                      ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
-                      Margin="5"
-                      IsSynchronizedWithCurrentItem="True"
-                      SelectedIndex="{Binding ListViewIndex}">
+            <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Info}"/>
