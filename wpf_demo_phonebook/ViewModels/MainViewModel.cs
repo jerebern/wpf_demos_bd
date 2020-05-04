@@ -65,6 +65,7 @@ namespace wpf_demo_phonebook.ViewModels
 
         public MainViewModel()
         {
+            NewContactCreation = false; 
             ListViewIndex = 0;
             SearchContactCommand = new RelayCommand(SearchContact);
             DeleteContactCommand = new RelayCommand(DeleteContact);
@@ -72,7 +73,7 @@ namespace wpf_demo_phonebook.ViewModels
             AddContactCommand = new RelayCommand(NewContact);
             SelectedContact = PhoneBookBusiness.GetContactByID(1);
             GetAllContactsFromDataBase(); //Init Value sur les autres travaille
-            NewContactCreation = false;
+           
         }
 
         private void GetAllContactsFromDataBase()
@@ -136,7 +137,7 @@ namespace wpf_demo_phonebook.ViewModels
 
         private void NewContact(object parameter)
         {
-            Debug.WriteLine("CRISS");
+        
 
             ContactModel contact = new ContactModel();
 

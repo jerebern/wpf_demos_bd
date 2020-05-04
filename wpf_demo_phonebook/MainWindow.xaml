@@ -48,7 +48,7 @@
             <StackPanel Margin="6" Orientation="Horizontal" x:Name="spHeader">
                 <TextBlock Text="Liste des contacts" />
             </StackPanel>
-            <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}">
+            <ListView Grid.Row="1" ItemsSource="{Binding Contacts}" SelectedItem="{Binding SelectedContact}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Info}"/>
