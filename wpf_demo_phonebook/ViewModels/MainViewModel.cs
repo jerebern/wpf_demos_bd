@@ -11,6 +11,8 @@ namespace wpf_demo_phonebook.ViewModels
         private ObservableCollection<ContactModel> contacts;
         private ContactModel selectedContact;
 
+        private bool NewContactCreation; //Flag de verification
+
         public ContactModel SelectedContact
         {
             get => selectedContact;
@@ -46,14 +48,18 @@ namespace wpf_demo_phonebook.ViewModels
 
         public RelayCommand DeleteContactCommand { get; set; }
 
+        public RelayCommand AddContactCommand { get; set; }
+
         public MainViewModel()
         {
 
             SearchContactCommand = new RelayCommand(SearchContact);
             DeleteContactCommand = new RelayCommand(DeleteContact);
             SaveContactCommand = new RelayCommand(UpdateContact);
+            AddContactCommand = new RelayCommand(NewContact);
             SelectedContact = PhoneBookBusiness.GetContactByID(1);
             GetAllContactsFromDataBase(); //Init Value sur les autres travaille
+            NewContactCreation = false;
         }
 
         private void GetAllContactsFromDataBase()
@@ -91,13 +97,30 @@ namespace wpf_demo_phonebook.ViewModels
             
         }
 
+        private void NewContact(object parameter)
+        {
+            Debug.WriteLine("CRISS");
+
+            ContactModel contact = new ContactModel();
+
+            selectedContact = contact;
+
+            NewContactCreation = true;
+
+
+
+        }
+
         private void UpdateContact(object parameter)
         {
-
-
-            PhoneBookBusiness.UpdateContact(SelectedContact);
+            //MainViewModel  Envoi selectedContact -> PhoneBook Recois un contact le décompose  -> DAO fait la querry
+            if (NewContactCreation)
+                PhoneBookBusiness.InsertContact(selectedContact);
+            else
+             PhoneBookBusiness.UpdateContact(SelectedContact);
+            //Mise a jour de la liste
             GetAllContactsFromDataBase();
-
+            NewContactCreation = false;
             ///Debug.WriteLine(_FirstName);
         }
 

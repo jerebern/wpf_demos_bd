@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace wpf_demo_phonebook
 {
-    public class ContactModel
+    public class ContactModel : INotifyPropertyChanged
     {
         public int ContactID { get; set; }
         public string FirstName { get; set; }
@@ -28,5 +29,7 @@ namespace wpf_demo_phonebook
         {
 
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

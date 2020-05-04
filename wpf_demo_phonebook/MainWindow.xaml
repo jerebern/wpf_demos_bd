@@ -7,6 +7,27 @@
         mc:Ignorable="d"
         Title="MainWindow" MinHeight="300" Width="800">
     <DockPanel>
+        <StackPanel DockPanel.Dock="Top">
+            <Menu>
+                <MenuItem Header="_Fichier">
+                    <MenuItem Header="_Ouvrir..."/>
+                    <MenuItem Header="_Sauvegarder"/>
+                    <MenuItem Header="_Fermer"/>
+                    <Separator/>
+                    <MenuItem Header="_Nouveau client"/>
+                    <Separator/>
+                    <MenuItem Header="_Quitter"/>
+                </MenuItem>
+                <MenuItem Header="_Édition">
+                    <MenuItem Header="Couper..."/>
+                    <MenuItem Header="Copier"/>
+                    <MenuItem Header="Coller"/>
+                </MenuItem>
+                <MenuItem Header="Enregistrement">
+                    <MenuItem Header="Nouveau Contact" Command="{Binding AddContactCommand}"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
         <ToolBarTray DockPanel.Dock="Top">
             <ToolBar>
                 <Button Content="+Contact" Command="{Binding AddContactCommand}"
