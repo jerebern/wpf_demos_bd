@@ -51,6 +51,7 @@ namespace wpf_demo_phonebook.ViewModels
 
             SearchContactCommand = new RelayCommand(SearchContact);
             DeleteContactCommand = new RelayCommand(DeleteContact);
+            SaveContactCommand = new RelayCommand(UpdateContact);
             SelectedContact = PhoneBookBusiness.GetContactByID(1);
             GetAllContactsFromDataBase(); //Init Value sur les autres travaille
         }
@@ -86,6 +87,18 @@ namespace wpf_demo_phonebook.ViewModels
                     MessageBox.Show("Unkonwn search method");
                     break;
             }
+           
+            
+        }
+
+        private void UpdateContact(object parameter)
+        {
+
+
+            PhoneBookBusiness.UpdateContact(SelectedContact);
+            GetAllContactsFromDataBase();
+
+            ///Debug.WriteLine(_FirstName);
         }
 
         private void DeleteContact(object parameter)

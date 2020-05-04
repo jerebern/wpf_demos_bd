@@ -62,6 +62,12 @@ namespace wpf_demo_phonebook
 
         }
 
+        public static void UpdateContact(ContactModel contact)
+        {
+
+            dao.UpdateContactOnDatabase(contact.FirstName, contact.LastName, contact.Email, contact.Phone, contact.Mobile, contact.ContactID);
+        }
+
         public static void DeleteContact(int _id)
         {
             dao.DeleteContactFromDatabase(_id);
